@@ -3,23 +3,15 @@ const [input_1, input_2, input_3] = document.querySelectorAll('#test input');
 const [button_1, button_2, button_3] = document.querySelectorAll('#test button');
 
 const questionData = [
-    'Напишите название языка типизации для JavaScript',
-    'Начиная с какого стандарта ES в JS не рекомендуется использовать var для объявления переменной?',
-    'С помощью какой браузерной функции можно вывести сообщение на экран?'
+    { label: 'Напишите название языка типизации для JavaScript', value: 'TypeScript' },
+    { label: 'Начиная с какого стандарта ES в JS не рекомендуется использовать var для объявления переменной?', value: 'ES6' },
+    { label: 'С помощью какой браузерной функции можно вывести сообщение на экран?', value: 'alert' }
 ];
 
-const quizData = [
-    'TypeScript',
-    'ES6',
-    'alert'
-];
+question_1.textContent = questionData[0].label;
 
-const newParagraph_1 = document.createElement('p');
-newParagraph_1.textContent = questionData[0];
-question_1.parentNode.appendChild(newParagraph_1);
-
-button_1.addEventListener('click', function() {
-    if (input_1.value === quizData[0]) {
+button_1.addEventListener('click', function () {
+    if (input_1.value.toLowerCase() === questionData[0].value.toLowerCase()) {
         const newSpan = document.createElement('span');
         newSpan.textContent = 'ответ правильный!';
         newSpan.style.color = 'green';
@@ -45,12 +37,10 @@ button_1.addEventListener('click', function() {
     }
 })
 
-const newParagraph_2 = document.createElement('p');
-newParagraph_2.textContent = questionData[1];
-question_2.parentNode.appendChild(newParagraph_2);
+question_2.textContent = questionData[1].label;
 
-button_2.addEventListener('click', function() {
-    if (input_2.value === quizData[1]) {
+button_2.addEventListener('click', function () {
+    if (input_2.value.toLowerCase() === questionData[1].value.toLowerCase()) {
         const newSpan = document.createElement('span');
         newSpan.textContent = 'ответ правильный!';
         newSpan.style.color = 'green';
@@ -76,12 +66,10 @@ button_2.addEventListener('click', function() {
     }
 })
 
-const newParagraph_3 = document.createElement('p');
-newParagraph_3.textContent = questionData[2];
-question_3.parentNode.appendChild(newParagraph_3);
+question_3.textContent = questionData[2].label;
 
-button_3.addEventListener('click', function() {
-    if (input_3.value === quizData[2]) {
+button_3.addEventListener('click', function () {
+    if (input_3.value.toLowerCase() === questionData[2].value.toLowerCase()) {
         const newSpan = document.createElement('span');
         newSpan.textContent = 'ответ правильный!';
         newSpan.style.color = 'green';
