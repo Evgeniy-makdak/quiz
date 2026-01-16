@@ -19,31 +19,30 @@ const questionData = [
   },
 ];
 
+const newSpan = document.createElement("span");
+
 for (let i = 0; i < button.length; i++) {
+  function deleteEffects() {
+    setTimeout(() => {
+      newSpan.textContent = "";
+      input[i].value = "";
+      input[i].style.border = "";
+    }, 3000);
+  }
   question[i].textContent = questionData[i].label;
   button[i].addEventListener("click", function () {
     if (input[i].value.toLowerCase() === questionData[i].value.toLowerCase()) {
-      const newSpan = document.createElement("span");
       newSpan.textContent = "ответ правильный!";
       newSpan.style.color = "green";
       input[i].style.border = "2px solid green";
       button[i].parentNode.appendChild(newSpan);
-      setTimeout(() => {
-        newSpan.textContent = "";
-        input[i].value = "";
-        input[i].style.border = "";
-      }, 3000);
+      deleteEffects();
     } else {
-      const newSpan = document.createElement("span");
       newSpan.textContent = "вы ошиблись, попробуйте ещё раз...";
       newSpan.style.color = "red";
-      input[i].style.border = "1px solid red";
+      input[i].style.border = "2px solid red";
       button[i].parentNode.appendChild(newSpan);
-      setTimeout(() => {
-        newSpan.textContent = "";
-        input[i].value = "";
-        input[i].style.border = "";
-      }, 5000);
+      deleteEffects();
     }
   });
-};
+}
