@@ -8,7 +8,7 @@ const quizData = [
 ]
 
 
-button_1.addEventListener('click', function () {
+button_1.addEventListener('click', function() {
     if (input_1.value === quizData[0]) {
         const newSpan = document.createElement('span');
         newSpan.textContent = 'ответ правильный!';
@@ -35,7 +35,7 @@ button_1.addEventListener('click', function () {
     }
 })
 
-button_2.addEventListener('click', function () {
+button_2.addEventListener('click', function() {
     if (input_2.value === quizData[1]) {
         const newSpan = document.createElement('span');
         newSpan.textContent = 'ответ правильный!';
@@ -62,7 +62,7 @@ button_2.addEventListener('click', function () {
     }
 })
 
-button_3.addEventListener('click', function () {
+button_3.addEventListener('click', function() {
     if (input_3.value === quizData[2]) {
         const newSpan = document.createElement('span');
         newSpan.textContent = 'ответ правильный!';
