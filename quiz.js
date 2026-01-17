@@ -19,31 +19,50 @@ const questionData = [
   },
 ];
 
-const newSpan = document.createElement("span");
+function deleteEffects(spanElement, inputElement) {
+  setTimeout(() => {
+    spanElement.textContent = "";
+    inputElement.value = "";
+    inputElement.style.border = "";
+  }, 3000);
+}
+
+function addEffects(
+  messageText,
+  messageColor,
+  borderStyle,
+  inputElement,
+  buttonElement,
+) {
+  const newSpan = document.createElement("span");
+  newSpan.textContent = messageText;
+  newSpan.style.color = messageColor;
+  inputElement.style.border = borderStyle;
+  buttonElement.parentNode.appendChild(newSpan);
+  return newSpan;
+}
 
 for (let i = 0; i < button.length; i++) {
-  function deleteEffects() {
-    setTimeout(() => {
-      newSpan.textContent = "";
-      input[i].value = "";
-      input[i].style.border = "";
-    }, 3000);
-  }
-
-  function addEffects(messageText, messageColor, inputElement) {
-    newSpan.textContent = messageText;
-    newSpan.style.color = messageColor;
-    input[i].style.border = inputElement;
-    button[i].parentNode.appendChild(newSpan);
-  }
   question[i].textContent = questionData[i].label;
   button[i].addEventListener("click", function () {
     if (input[i].value.toLowerCase() === questionData[i].value.toLowerCase()) {
-      addEffects("правильный ответ", "green", "2px solid green");
-      deleteEffects();
+      const span = addEffects(
+        "правильный ответ",
+        "green",
+        "2px solid green",
+        input[i],
+        button[i],
+      );
+      deleteEffects(span, input[i]);
     } else {
-      addEffects("вы ошиблись, попробуйте ещё раз...", "red", "2px solid red");
-      deleteEffects();
+      const span = addEffects(
+        "вы ошиблись, попробуйте ещё раз...", 
+        "red", 
+        "2px solid red",
+        input[i],
+        button[i],
+      );
+      deleteEffects(span, input[i]);
     }
   });
 }
